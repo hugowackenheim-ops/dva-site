@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://datavalueadvisory.fr/sitemap.xml
