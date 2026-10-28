@@ -63,8 +63,10 @@
 
     <form class="form" id="form-contact" novalidate>
       <h2>Décrivez-nous votre projet</h2>
-      <p>Votre messagerie s'ouvrira avec un message prérempli, prêt à être envoyé.</p>
+      <p>Votre message nous parvient directement, sans quitter le site.</p>
       <div class="champ"><label for="nom">Nom et prénom</label><input id="nom" name="nom" type="text" autocomplete="name" required></div>
+      <div class="champ"><label for="email">E-mail professionnel</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="champ" style="position:absolute;left:-9999px" aria-hidden="true"><label for="site_web">Site web</label><input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="champ"><label for="societe">Entreprise</label><input id="societe" name="societe" type="text" autocomplete="organization"></div>
       <div class="champ"><label for="flotte">Taille de la flotte</label>
         <select id="flotte" name="flotte">
@@ -87,7 +89,7 @@
         </select>
       </div>
       <div class="champ"><label for="message">Message</label><textarea id="message" name="message" placeholder="Votre contexte, vos échéances, vos questions…"></textarea></div>
-      <button class="btn btn-marine" type="submit">Préparer mon message</button>
+      <button class="btn btn-marine" type="submit" id="form-envoi">Envoyer mon message</button>
       <p class="note" id="form-note">Vous pouvez aussi écrire directement à hwackenheim@datavalueadvisory.fr.</p>
     </form>
   </div>
@@ -152,19 +154,27 @@
 </script>
 <script>
 (function(){
-  var f=document.getElementById('form-contact');
+  var URL_FORMULAIRE='https://script.google.com/macros/s/AKfycby1CMInpljtR9XFJsExj1DfH2Ahnwj8xnX9zZUjCuCNIsvgiH8rLS6QHw8LkKTXcALn/exec';
+  var f=document.getElementById('form-contact'), note=document.getElementById('form-note'), btn=document.getElementById('form-envoi');
   if(!f)return;
+  var noteDefaut=note.textContent;
+  function info(txt,couleur){note.textContent=txt;note.style.color=couleur||'';}
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var v=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
-    if(!v('nom')){document.getElementById('nom').focus();document.getElementById('form-note').textContent='Merci d’indiquer votre nom.';return;}
-    var sujet='Projet flotte — '+v('sujet')+(v('societe')?' — '+v('societe'):'');
-    var corps='Bonjour,\n\n'+(v('message')||'Je souhaiterais échanger sur notre projet.')+
-      '\n\n---\nNom : '+v('nom')+
-      (v('societe')?'\nEntreprise : '+v('societe'):'')+
-      (v('flotte')?'\nTaille de la flotte : '+v('flotte'):'')+
-      '\nBesoin : '+v('sujet');
-    window.location.href='mailto:hwackenheim@datavalueadvisory.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
+    var nom=f.nom.value.trim(), mail=f.email.value.trim();
+    if(!nom){f.nom.focus();info('Merci d\u2019indiquer votre nom.','#B3261E');return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){f.email.focus();info('Merci d\u2019indiquer une adresse e-mail valide.','#B3261E');return;}
+    btn.disabled=true;btn.textContent='Envoi en cours\u2026';info(noteDefaut);
+    fetch(URL_FORMULAIRE,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(f))})
+      .then(function(){
+        f.reset();
+        btn.textContent='Message envoyé';
+        info('Merci, votre message a bien été envoyé. Nous revenons vers vous rapidement.','#1E7B4F');
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent='Envoyer mon message';
+        info('L\u2019envoi n\u2019a pas abouti. Écrivez-nous directement à hwackenheim@datavalueadvisory.fr.','#B3261E');
+      });
   });
 })();
 </script>
