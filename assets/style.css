@@ -222,6 +222,12 @@ a.ccarte:hover{border-color:var(--marine);box-shadow:0 10px 30px rgba(15,35,64,.
 .foot-grid a:hover{color:#fff}
 .foot-bas{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:13px;color:rgba(255,255,255,.45)}
 
+/* ---------- Justification des textes ---------- */
+p,.points p,.offre p,.bloc p,.bloc li,.offre li,.parcours p,.principe p,.format p,.faq details p,.txt p,.hero-bas div{text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+.cta-bande p,.form .note{text-align:center}
+.form > p,.form .note{text-align:left}
+.formats.deux{grid-template-columns:repeat(2,1fr)}
+
 /* ---------- Responsive ---------- */
 @media (max-width:960px){
   .hero-body,.deux-col,.fond-grid,.cibles,.contact-grid,.expertise{grid-template-columns:1fr;gap:36px}
@@ -256,7 +262,7 @@ a.ccarte:hover{border-color:var(--marine);box-shadow:0 10px 30px rgba(15,35,64,.
   .page-hero p{font-size:16.5px}
   .tete h2,.h2{font-size:27px}
   .cta-bande h2{font-size:29px}
-  .offres,.etapes,.engagements,.formats,.principes,.blocs,.foot-grid{grid-template-columns:1fr}
+  .offres,.etapes,.engagements,.formats,.formats.deux,.principes,.blocs,.foot-grid{grid-template-columns:1fr}
   .expertise{padding:52px 0}
   .expertise .num{font-size:44px}
   .form{padding:24px 18px}
