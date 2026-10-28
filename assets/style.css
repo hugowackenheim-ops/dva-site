@@ -297,6 +297,10 @@ a.ccarte:hover{border-color:var(--marine);box-shadow:0 10px 30px rgba(15,35,64,.
 .fin-art a:hover{border-color:var(--marine)}
 .fin-art .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);font-family:'Sora',Arial,sans-serif;font-weight:600;margin-bottom:6px}
 .fin-art .tt{font-family:'Sora',Arial,sans-serif;font-size:16px;font-weight:600;color:var(--marine);line-height:1.35}
+.figure{margin:30px 0 34px}
+.figure img{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 12px 32px rgba(15,35,64,.12)}
+.figure.portrait{max-width:440px;margin-left:auto;margin-right:auto}
+.figure figcaption{font-size:13.5px;color:var(--texte-2);text-align:center;margin-top:12px;font-style:italic}
 @media (max-width:960px){.articles{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){
   .articles,.fin-art{grid-template-columns:1fr}
