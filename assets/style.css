@@ -128,6 +128,7 @@ section{padding:88px 0}
 /* ---------- Fondateur ---------- */
 .fond-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:start}
 .carte{background:var(--marine);border-radius:6px;padding:32px 28px;color:#fff}
+.carte .photo{display:block;width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--or);margin-bottom:24px;background:var(--marine)}
 .carte .ini{width:72px;height:72px;border-radius:50%;border:2px solid var(--or);display:flex;align-items:center;justify-content:center;font-family:'Sora',Arial,sans-serif;font-size:24px;font-weight:600;margin-bottom:22px}
 .carte .nom{font-family:'Sora',Arial,sans-serif;font-size:20px;font-weight:600}
 .carte .role{color:var(--or-clair);font-size:14px;margin:4px 0 22px}
