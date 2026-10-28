@@ -223,6 +223,39 @@ a.ccarte:hover{border-color:var(--marine);box-shadow:0 10px 30px rgba(15,35,64,.
 .foot-grid a:hover{color:#fff}
 .foot-bas{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:13px;color:rgba(255,255,255,.45)}
 
+/* ---------- Page Outils ---------- */
+.outil{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center;padding:72px 0;border-top:1px solid var(--trait);scroll-margin-top:90px}
+.outil:first-child{border-top:0;padding-top:24px}
+.outil.inverse .outil-txt{order:2}
+.outil .num{font-family:'Sora',Arial,sans-serif;font-size:13px;color:var(--or);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.outil h2{font-size:28px;margin-bottom:14px}
+.outil .outil-txt > p{text-align:justify;color:var(--texte-2);font-size:16px;margin-bottom:18px}
+.outil ul{list-style:none;margin-bottom:20px}
+.outil li{font-size:15px;padding:6px 0 6px 18px;position:relative;border-bottom:1px solid var(--trait)}
+.outil li:last-child{border-bottom:0}
+.outil li::before{content:"";position:absolute;left:0;top:16px;width:6px;height:6px;border-radius:50%;background:var(--or)}
+.mention{font-size:13px;color:var(--texte-2);font-style:italic}
+.captures{display:grid;gap:16px}
+.captures.deux{grid-template-columns:1fr 1fr}
+.capture{display:block;border:1px solid var(--trait);border-radius:8px;overflow:hidden;background:var(--fond);box-shadow:0 12px 32px rgba(15,35,64,.10);cursor:zoom-in;padding:0;transition:transform .2s,box-shadow .2s}
+.capture:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(15,35,64,.14)}
+.capture img{display:block;width:100%;height:auto}
+.capture figcaption{font-size:12.5px;color:var(--texte-2);padding:8px 12px;background:#fff;border-top:1px solid var(--trait);text-align:left}
+.zoom{position:fixed;inset:0;background:rgba(10,24,48,.88);display:none;align-items:center;justify-content:center;z-index:100;padding:24px;cursor:zoom-out}
+.zoom.ouvert{display:flex}
+.zoom img{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:16px}
+.cases label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--texte);background:#fff;border:1px solid var(--trait);border-radius:4px;padding:10px 12px;cursor:pointer}
+.cases input{margin-top:3px;accent-color:var(--marine)}
+@media (max-width:960px){
+  .outil{grid-template-columns:1fr;gap:28px;padding:56px 0}
+  .outil.inverse .outil-txt{order:0}
+}
+@media (max-width:640px){
+  .captures.deux,.cases{grid-template-columns:1fr}
+  .outil h2{font-size:24px}
+}
+
 /* ---------- Justification des textes ---------- */
 p,.points p,.offre p,.bloc p,.bloc li,.offre li,.parcours p,.principe p,.format p,.faq details p,.txt p,.hero-bas div{text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .cta-bande p,.form .note{text-align:center}
